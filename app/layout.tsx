@@ -5,8 +5,14 @@ import Footer from "@/components/common/Footer";
 import { PrefProvider } from "./context/PrefContext";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://apexaid.com.au"),
   title: "Apex Aid Services",
-  description: "Care that lifts, Support that Lasts",
+  description: "Care that Uplifts, Support that Endures",
+  openGraph: {
+    siteName: "Apex Aid Services",
+    type: "website",
+    locale: "en_US",
+  },
 };
 
 export default function RootLayout({

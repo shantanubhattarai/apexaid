@@ -1,5 +1,10 @@
 import Banner from "@/components/common/Banner";
-// import Image from "next/image";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About | Apex Aid Services",
+  description: "Care that Uplifts, Support that Endures",
+};
 
 const About = () => {
   return (
@@ -46,8 +51,6 @@ const About = () => {
           <li>Community Nursing Care (including High-Intensity)</li>
           <li>Innovative Community Participation</li>
           <li>Group & Centre-Based Activities</li>
-          <li>Daily Tasks / Shared Living</li>
-          <li>Household Tasks & Home Maintenance</li>
           <li>Assist Personal Activities (Standard & High)</li>
           <li>Complex Behavioural & Forensic Supports</li>
           <li>Transition Programs (Hospital to Home, Youth to Adult Care)</li>
