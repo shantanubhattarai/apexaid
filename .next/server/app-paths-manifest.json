@@ -1,0 +1,5 @@
+{
+  "/page": "app/page.js",
+  "/services/supported-independent-living/page": "app/services/supported-independent-living/page.js",
+  "/contact/page": "app/contact/page.js"
+}
