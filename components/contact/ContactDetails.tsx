@@ -35,10 +35,10 @@ const ContactDetails = ({ horizontal }: { horizontal?: boolean }) => {
           "flex gap-2 items-center underline underline-offset-2",
           highlightLinks && "font-semibold"
         )}
-        href="mailto:info@health.dev"
+        href="mailto:info@apexaid.com.au?subject=Enquiry%20Request"
       >
         <Mail size={18} />
-        <span>info@health.dev</span>
+        <span>info@apexaid.com.au</span>
       </Link>
     </ul>
   );
