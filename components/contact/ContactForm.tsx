@@ -2,10 +2,12 @@ const ContactForm = () => {
   return (
     <form
       className="flex flex-col gap-4"
-      action={"mailto:info@apexaid.com.au"}
+      target="_blank"
+      action={"https://formsubmit.co/info@apexaid.com.au"}
       method="post"
       encType="multipart/form-data"
     >
+      <input type="hidden" name="_subject" value="New Enquiry" />
       <div>
         <label className="block mb-1 text-zinc-600 text-sm tracking-wide">
           Name<span className="text-red-700">*</span>
@@ -14,7 +16,7 @@ const ContactForm = () => {
           className="border border-zinc-300 bg-white rounded-sm p-2 block w-full"
           placeholder="Your name"
           required
-          name="fullName"
+          name="name"
         />
       </div>
       <div>
@@ -36,7 +38,7 @@ const ContactForm = () => {
           className="border border-zinc-300 bg-white rounded-sm p-2 block w-full"
           required
           placeholder="Your phone number"
-          name="phoneNumber"
+          name="phone"
         />
       </div>
       <div>
