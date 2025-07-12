@@ -1,4 +1,9 @@
+"use client";
+
+import { useState } from "react";
+
 const ContactForm = () => {
+  const [contactPreference, setContactPreference] = useState<string>("");
   return (
     <form
       className="flex flex-col gap-4"
@@ -51,12 +56,21 @@ const ContactForm = () => {
           Contact Preference
         </label>
         <div className="flex flex-col md:flex-row lg:space-x-2 wrap">
+          <input
+            type="hidden"
+            name="Contact Preference"
+            value={contactPreference || ""}
+            readOnly
+          />
           <div className="flex space-x-1 items-center">
             <input
               className="border border-zinc-300 bg-white"
               type="radio"
               id="callback"
-              name="contactPreference"
+              onChange={(e) =>
+                e.target.value === "on" &&
+                setContactPreference("Request for Callback")
+              }
             />
             <label htmlFor="contact-callback" className="text-zinc-800">
               Request for Callback
@@ -67,7 +81,10 @@ const ContactForm = () => {
               className="border border-zinc-300 bg-white"
               type="radio"
               id="email"
-              name="contactPreference"
+              onChange={(e) =>
+                e.target.value === "on" &&
+                setContactPreference("Request for Email")
+              }
             />
             <label htmlFor="contact-email" className="text-zinc-800">
               Request for email

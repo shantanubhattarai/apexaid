@@ -411,7 +411,6 @@ const ReferralForm = () => {
                 className="border border-zinc-300"
                 type="radio"
                 id="heard-instagram"
-                name="heard"
                 onChange={(e) =>
                   e.target.value === "on" && setHeard("Instagram")
                 }
@@ -425,7 +424,6 @@ const ReferralForm = () => {
                 className="border border-zinc-300"
                 type="radio"
                 id="heard-colleague"
-                name="heard"
                 onChange={(e) =>
                   e.target.value === "on" && setHeard("Colleague or Friend")
                 }
