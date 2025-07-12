@@ -1,6 +1,54 @@
+"use client";
+
+import { useState } from "react";
+import { Resend } from "resend";
+import { ContactEmailTemplate } from "../contact-template";
+
+const resend = new Resend("re_CPFXvto2_35CHSpogtBnJ8xmJmvFKsoVJ");
+
 const ContactForm = () => {
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string>("");
+  const [success, setSuccess] = useState<string>("");
+
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+
+    const formDataObject = Object.fromEntries(formData);
+    const { fullName, email, phoneNumber, contactPreference, enquiry } =
+      formDataObject;
+
+    setLoading(true);
+
+    try {
+      setLoading(true);
+      const result = await resend.emails.send({
+        from: "noreply@apexaid.com.au",
+        to: ["delivered@resend.dev"],
+        // to: ["info@apexaid.com.au"],
+        subject: "",
+        react: ContactEmailTemplate({
+          fullName: fullName as string,
+          email: email as string,
+          phoneNumber: phoneNumber as string,
+          contactPreference: contactPreference as string,
+          enquiry: enquiry as string,
+        }),
+      });
+
+      if (result && result.data) {
+        setSuccess("Email sent to Apex Aid Services.");
+        setLoading(false);
+      }
+    } catch {
+      setError("Could not send email.");
+    }
+    setLoading(false);
+  };
+
   return (
-    <form className="flex flex-col gap-4">
+    <form className="flex flex-col gap-4" onSubmit={onSubmit}>
       <div>
         <label className="block mb-1 text-zinc-600 text-sm tracking-wide">
           Name<span className="text-red-700">*</span>
@@ -9,7 +57,7 @@ const ContactForm = () => {
           className="border border-zinc-300 bg-white rounded-sm p-2 block w-full"
           placeholder="Your name"
           required
-          name="name"
+          name="fullName"
         />
       </div>
       <div>
@@ -31,7 +79,7 @@ const ContactForm = () => {
           className="border border-zinc-300 bg-white rounded-sm p-2 block w-full"
           required
           placeholder="Your phone number"
-          name="phone"
+          name="phoneNumber"
         />
       </div>
       <div>
@@ -43,8 +91,8 @@ const ContactForm = () => {
             <input
               className="border border-zinc-300 bg-white"
               type="radio"
-              id="contact-callback"
-              name="contact-preference"
+              id="callback"
+              name="contactPreference"
             />
             <label htmlFor="contact-callback" className="text-zinc-800">
               Request for Callback
@@ -54,8 +102,8 @@ const ContactForm = () => {
             <input
               className="border border-zinc-300 bg-white"
               type="radio"
-              id="contact-email"
-              name="contact-preference"
+              id="email"
+              name="contactPreference"
             />
             <label htmlFor="contact-email" className="text-zinc-800">
               Request for email
@@ -78,8 +126,18 @@ const ContactForm = () => {
         className="font-medium bg-green-700 ring ring-green-600 hover:ring-green-400 hover:bg-green-600 active:ring-green-600 active:bg-green-700 bg-noise bg-blend-color-burn text-white px-6 py-2 rounded-sm tracking-wide cursor-pointer transition-all"
         type="submit"
       >
-        Send
+        {loading ? "Sending..." : "Send"}
       </button>
+      {success && (
+        <div className="px-3 py-1 bg-green-100 border-green-200 text-green-900">
+          {success}
+        </div>
+      )}
+      {error && (
+        <div className="px-3 py-1 bg-red-100 border-red-200 text-red-900">
+          {error}
+        </div>
+      )}
     </form>
   );
 };
