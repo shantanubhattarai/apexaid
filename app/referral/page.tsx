@@ -1,4 +1,6 @@
+import Alert from "@/components/contact/Alert";
 import ReferralForm from "@/components/referral/ReferralForm";
+import { Suspense } from "react";
 
 const Referral = () => {
   return (
@@ -17,6 +19,9 @@ const Referral = () => {
         </div>
       </section>
       <section className="pt-24 py-12 lg:max-w-2xl">
+        <Suspense fallback={null}>
+          <Alert content="Your referral request has been sent." />
+        </Suspense>
         <ReferralForm />
       </section>
     </article>

@@ -8,6 +8,11 @@ const ContactForm = () => {
       encType="multipart/form-data"
     >
       <input type="hidden" name="_subject" value="New Enquiry" />
+      <input
+        type="hidden"
+        name="_next"
+        value="https://apexaid.com.au/contact?status=success"
+      />
       <div>
         <label className="block mb-1 text-zinc-600 text-sm tracking-wide">
           Name<span className="text-red-700">*</span>
@@ -72,11 +77,12 @@ const ContactForm = () => {
       </div>
       <div>
         <label className="block mb-1 text-zinc-600 text-sm tracking-wide">
-          Enquiry
+          Enquiry<span className="text-red-700">*</span>
         </label>
         <textarea
           placeholder="Any additional information you would like to send"
           className="border border-zinc-300 bg-white rounded-sm p-2 block w-full resize-none"
+          required
           rows={5}
           name="enquiry"
         />

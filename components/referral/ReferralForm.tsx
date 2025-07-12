@@ -24,24 +24,16 @@ const interestedServices = [
     label: "Community Nursing Care (including High-Intensity)",
   },
   {
-    value: "Innovative Community Participation",
-    label: "Innovative Community Participation",
+    value: "Community Participation",
+    label: "Community Participation",
   },
   {
     value: "Group & Centre-Based Activities",
     label: "Group & Centre-Based Activities",
   },
   {
-    value: "Daily Tasks / Shared Living",
-    label: "Daily Tasks / Shared Living",
-  },
-  {
-    value: "Household Tasks & Home Maintenance",
-    label: "Household Tasks & Home Maintenance",
-  },
-  {
-    value: "Assist Personal Activities (Standard & High)",
-    label: "Assist Personal Activities (Standard & High)",
+    value: "Assistance with Personal Activities (Standard & High)",
+    label: "Assistance with Personal Activities (Standard & High)",
   },
   {
     value: "Complex Behavioural & Forensic Supports",
@@ -83,13 +75,34 @@ const interestedServices = [
     value: "Palliative Care",
     label: "Palliative Care",
   },
+  {
+    value: "Innovative Community Participation",
+    label: "Innovative Community Participation",
+  },
 ];
 
 const ReferralForm = () => {
   const [date, setDate] = useState<Date>();
+  const [dateOfBirth, setDateOfBirth] = useState<Date>();
+  const [gender, setGender] = useState<string>("");
+  const [heard, setHeard] = useState<string>("");
+  const [contactWho, setContactWho] = useState<string>("");
+  const [pickedServices, setPickedServices] = useState<string[]>([]);
 
   return (
-    <form className="flex flex-col gap-4">
+    <form
+      className="flex flex-col gap-4"
+      target="_blank"
+      action={"https://formsubmit.co/info@apexaid.com.au"}
+      method="post"
+      encType="multipart/form-data"
+    >
+      <input type="hidden" name="_subject" value="New Referral Request" />
+      <input
+        type="hidden"
+        name="_next"
+        value="https://apexaid.com.au/referral?status=success"
+      />
       <div className="grid grid-cols-2 gap-x-4">
         <div>
           <label className="block mb-1 text-zinc-600 text-sm tracking-wide">
@@ -107,17 +120,18 @@ const ReferralForm = () => {
               </button>
             </PopoverTrigger>
             <PopoverContent className="w-auto p-0">
-              <Calendar
-                mode="single"
-                selected={date}
-                onSelect={setDate}
-                initialFocus
-              />
+              <Calendar mode="single" selected={date} onSelect={setDate} />
             </PopoverContent>
           </Popover>
         </div>
       </div>
       <section className="flex flex-col gap-4 mt-4">
+        <input
+          type="hidden"
+          name="date"
+          value={(date && format(date, "PPP")) || ""}
+          readOnly
+        />
         <h4 className="border-b pb-2">Referrer Details</h4>
         <div>
           <label className="block mb-1 text-zinc-600 text-sm tracking-wide">
@@ -169,6 +183,12 @@ const ReferralForm = () => {
           <label className="block mb-1 text-zinc-600 text-sm tracking-wide">
             What services are you interested in?
           </label>
+          <input
+            type="hidden"
+            name="Interested Services"
+            value={pickedServices.join(",") || ""}
+            readOnly
+          />
           <ul>
             {interestedServices.map((item) => (
               <li
@@ -179,6 +199,15 @@ const ReferralForm = () => {
                   type="checkbox"
                   id={`check-${item.value}`}
                   className="mt-1 md:mt-0"
+                  onChange={(e) => {
+                    if (e.target.checked === true) {
+                      setPickedServices((prev) => [...prev, item.value]);
+                    } else {
+                      setPickedServices((prev) =>
+                        prev.filter((service) => service === item.value)
+                      );
+                    }
+                  }}
                 />
                 <label
                   htmlFor={`check-${item.value}`}
@@ -213,8 +242,8 @@ const ReferralForm = () => {
               <PopoverTrigger asChild>
                 <button className="border border-zinc-300 rounded-sm p-2 flex items-center justify-start gap-2 w-full">
                   <CalendarIcon size={16} className="text-zinc-500" />
-                  {date ? (
-                    format(date, "PPP")
+                  {dateOfBirth ? (
+                    format(dateOfBirth, "PPP")
                   ) : (
                     <span className="text-zinc-500">Pick a date</span>
                   )}
@@ -223,24 +252,35 @@ const ReferralForm = () => {
               <PopoverContent className="w-auto p-0">
                 <Calendar
                   mode="single"
-                  selected={date}
-                  onSelect={setDate}
-                  initialFocus
+                  selected={dateOfBirth}
+                  onSelect={setDateOfBirth}
                 />
               </PopoverContent>
             </Popover>
+            <input
+              type="hidden"
+              name="dateOfBirth"
+              value={(dateOfBirth && format(dateOfBirth, "PPP")) || ""}
+              readOnly
+            />
           </div>
           <div>
             <label className="block mb-1 text-zinc-600 text-sm tracking-wide">
               Gender
             </label>
             <div className="flex space-x-2 wrap">
+              <input
+                type="hidden"
+                name="Participant Gender"
+                value={gender || ""}
+                readOnly
+              />
               <div className="flex space-x-1 items-center">
                 <input
                   className="border border-zinc-300"
                   type="radio"
                   id="gender-male"
-                  name="participant-gender"
+                  onChange={(e) => e.target.value === "on" && setGender("Male")}
                 />
                 <label htmlFor="gender-male" className="text-zinc-800">
                   Male
@@ -251,7 +291,9 @@ const ReferralForm = () => {
                   className="border border-zinc-300"
                   type="radio"
                   id="gender-female"
-                  name="participant-gender"
+                  onChange={(e) =>
+                    e.target.value === "on" && setGender("Female")
+                  }
                 />
                 <label htmlFor="gender-female" className="text-zinc-800">
                   Female
@@ -262,7 +304,9 @@ const ReferralForm = () => {
                   className="border border-zinc-300"
                   type="radio"
                   id="gender-unanswered"
-                  name="participant-gender"
+                  onChange={(e) =>
+                    e.target.value === "on" && setGender("Prefer Not to Say")
+                  }
                 />
                 <label htmlFor="gender-unanswered" className="text-zinc-800">
                   Prefer not to say
@@ -332,12 +376,18 @@ const ReferralForm = () => {
             Where did you hear about us?
           </label>
           <div className="flex flex-col md:flex-row space-x-2 wrap">
+            <input
+              type="hidden"
+              name="Heard about us"
+              value={heard || ""}
+              readOnly
+            />
             <div className="flex space-x-1 items-center">
               <input
                 className="border border-zinc-300"
                 type="radio"
                 id="heard-google"
-                name="heard"
+                onChange={(e) => e.target.value === "on" && setHeard("Google")}
               />
               <label htmlFor="heard-google" className="text-zinc-800">
                 Google
@@ -348,7 +398,9 @@ const ReferralForm = () => {
                 className="border border-zinc-300"
                 type="radio"
                 id="heard-facebook"
-                name="heard"
+                onChange={(e) =>
+                  e.target.value === "on" && setHeard("Facebook")
+                }
               />
               <label htmlFor="heard-facebook" className="text-zinc-800">
                 Facebook
@@ -360,6 +412,9 @@ const ReferralForm = () => {
                 type="radio"
                 id="heard-instagram"
                 name="heard"
+                onChange={(e) =>
+                  e.target.value === "on" && setHeard("Instagram")
+                }
               />
               <label htmlFor="heard-instagram" className="text-zinc-800">
                 Instagram
@@ -371,6 +426,9 @@ const ReferralForm = () => {
                 type="radio"
                 id="heard-colleague"
                 name="heard"
+                onChange={(e) =>
+                  e.target.value === "on" && setHeard("Colleague or Friend")
+                }
               />
               <label htmlFor="heard-colleague" className="text-zinc-800">
                 Colleague or Friend
@@ -391,6 +449,12 @@ const ReferralForm = () => {
           />
         </div>
         <div>
+          <input
+            type="hidden"
+            name="Contact Prefernce"
+            value={contactWho || ""}
+            readOnly
+          />
           <label className="block mb-1 text-zinc-600 text-sm tracking-wide">
             Who should we contact?
           </label>
@@ -400,7 +464,10 @@ const ReferralForm = () => {
                 className="border border-zinc-300"
                 type="radio"
                 id="contact-participant"
-                name="contact-who"
+                onChange={(e) =>
+                  e.target.value === "on" &&
+                  setContactWho("Contact participant directly")
+                }
               />
               <label htmlFor="contact-participant" className="text-zinc-800">
                 Contact participant directly
@@ -411,7 +478,9 @@ const ReferralForm = () => {
                 className="border border-zinc-300"
                 type="radio"
                 id="contact-referrer"
-                name="contact-who"
+                onChange={(e) =>
+                  e.target.value === "on" && setContactWho("Contact referrer")
+                }
               />
               <label htmlFor="contact-referrer" className="text-zinc-800">
                 Contact referrer

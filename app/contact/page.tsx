@@ -1,5 +1,7 @@
+import Alert from "@/components/contact/Alert";
 import ContactDetails from "@/components/contact/ContactDetails";
 import ContactForm from "@/components/contact/ContactForm";
+import { Suspense } from "react";
 
 const Contact = () => {
   return (
@@ -14,13 +16,20 @@ const Contact = () => {
           </p>
         </div>
       </section>
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-24 py-12">
-        <ContactForm />
-        <aside>
-          <div className="bg-teal-50 text-teal-950 rounded-md py-8 px-6 w-full md:w-fit h-fit md:mt-4">
-            <ContactDetails />
-          </div>
-        </aside>
+      <section className="pt-24 py-12">
+        <div className="max-w-xl">
+          <Suspense fallback={null}>
+            <Alert content="Your enquiry has been sent." />
+          </Suspense>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <ContactForm />
+          <aside>
+            <div className="bg-teal-50 text-teal-950 rounded-md py-8 px-6 w-full md:w-fit h-fit md:mt-4">
+              <ContactDetails />
+            </div>
+          </aside>
+        </div>
       </section>
       <section className="py-4">
         <iframe
