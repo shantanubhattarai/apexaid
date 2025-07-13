@@ -1,6 +1,12 @@
 import Alert from "@/components/contact/Alert";
 import ReferralForm from "@/components/referral/ReferralForm";
+import { Metadata } from "next";
 import { Suspense } from "react";
+
+export const metadata: Metadata = {
+  title: "Referral | Apex Aid Health Care",
+  description: "Easy and simple referral to Apex Aid Health Care",
+};
 
 const Referral = () => {
   return (

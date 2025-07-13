@@ -2,6 +2,12 @@
 // import FDSImage from "@/public/images/FDS.jpg";
 import Banner from "@/components/common/Banner";
 import ContactDetails from "@/components/contact/ContactDetails";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Household Equipment and Assistive Products | Apex Aid Health Care",
+  description: "Person-centered, high-quality NDIS Services",
+};
 
 export default function HouseholdEquipmentAndAssistiveProducts() {
   return (

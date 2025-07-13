@@ -3,6 +3,12 @@ import GroupImage from "@/public/images/GroupAndCentre.jpg";
 import Group01Image from "@/public/images/Group.jpg";
 import Banner from "@/components/common/Banner";
 import ContactDetails from "@/components/contact/ContactDetails";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Group and Centre-Based Activities | Apex Aid Health Care",
+  description: "Person-centered, high-quality NDIS Services",
+};
 
 export default function GroupActivities() {
   return (

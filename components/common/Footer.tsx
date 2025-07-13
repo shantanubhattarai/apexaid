@@ -302,7 +302,7 @@ const Footer = () => {
             <Image src={NDISImage} alt="Registered NDIS Provider" height={96} />
           </p>
           <div className="container mx-auto px-4 text-center lg:text-right text-zinc-300">
-            <p>&copy; 2025 Apex Aid Services. All rights reserved.</p>
+            <p>&copy; 2025 Apex Aid Health Care. All rights reserved.</p>
             <p>
               <span className="mr-2">ABN</span>
               <span>84 677 907 881</span>

@@ -3,6 +3,12 @@ import SCPImage from "@/public/images/SCP.jpg";
 import SCP01Image from "@/public/images/SCP_01.jpg";
 import Banner from "@/components/common/Banner";
 import ContactDetails from "@/components/contact/ContactDetails";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Community Participation | Apex Aid Health Care",
+  description: "Person-centered, high-quality NDIS Services",
+};
 
 export default function CommunityParticipation() {
   return (

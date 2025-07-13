@@ -3,6 +3,12 @@ import SILImage from "@/public/images/SIL.jpg";
 // import SIL_01 from "@/public/images/SIL_01.jpg";
 import Banner from "@/components/common/Banner";
 import ContactDetails from "@/components/contact/ContactDetails";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Supported Independent Living | Apex Aid Health Care",
+  description: "Person-centered, high-quality NDIS Services",
+};
 
 export default function SIL() {
   return (

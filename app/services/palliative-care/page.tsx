@@ -2,6 +2,12 @@
 // import STAImage from "@/public/images/PalliativeCare.jpg";
 import Banner from "@/components/common/Banner";
 import ContactDetails from "@/components/contact/ContactDetails";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Palliative Care | Apex Aid Health Care",
+  description: "Person-centered, high-quality NDIS Services",
+};
 
 export default function PalliativeCare() {
   return (

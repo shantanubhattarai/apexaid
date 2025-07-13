@@ -3,6 +3,12 @@ import ADLImage from "@/public/images/ADL.jpg";
 import ADL01Image from "@/public/images/ADL_01.jpg";
 import Banner from "@/components/common/Banner";
 import ContactDetails from "@/components/contact/ContactDetails";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Assitance with Personal Activities | Apex Aid Health Care",
+  description: "Person-centered, high-quality NDIS Services",
+};
 
 export default function AssistanceWithPersonalActivities() {
   return (

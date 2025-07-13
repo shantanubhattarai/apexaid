@@ -4,6 +4,12 @@ import SDAImage from "@/public/images/SDA.jpg";
 import SDA01 from "@/public/images/SDA01.png";
 import SDA02 from "@/public/images/SDA02.png";
 import Banner from "@/components/common/Banner";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Specialist Disability Accommodation | Apex Aid Health Care",
+  description: "Person-centered, high-quality NDIS Services",
+};
 
 export default function SDA() {
   return (

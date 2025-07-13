@@ -3,6 +3,12 @@ import SupportImage from "@/public/images/SupportCoordination.jpg";
 import Support01Image from "@/public/images/SupportCoordination_01.jpg";
 import Banner from "@/components/common/Banner";
 import ContactDetails from "@/components/contact/ContactDetails";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Support Coordination | Apex Aid Health Care",
+  description: "Person-centered, high-quality NDIS Services",
+};
 
 export default function SupportCoordination() {
   return (

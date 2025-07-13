@@ -3,6 +3,12 @@ import HtoHImage from "@/public/images/HtoH.jpg";
 import HtoH01Image from "@/public/images/HtoH_01.jpg";
 import Banner from "@/components/common/Banner";
 import ContactDetails from "@/components/contact/ContactDetails";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Transition Supports | Apex Aid Health Care",
+  description: "Person-centered, high-quality NDIS Services",
+};
 
 export default function TransitionSupports() {
   return (

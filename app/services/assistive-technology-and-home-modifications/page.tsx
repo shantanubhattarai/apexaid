@@ -3,6 +3,12 @@ import AssistiveTechImage from "@/public/images/AssistiveTech.jpeg";
 import Assistive01TechImage from "@/public/images/AssistiveTech01.jpeg";
 import Banner from "@/components/common/Banner";
 import ContactDetails from "@/components/contact/ContactDetails";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Assistive Technology and Home Modifications | Apex Aid Health Care",
+  description: "Person-centered, high-quality NDIS Services",
+};
 
 export default function AssistiveTechnologyAndHomeModifications() {
   return (

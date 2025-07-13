@@ -2,6 +2,12 @@ import Image from "next/image";
 import CNImage from "@/public/images/CN.jpg";
 import Banner from "@/components/common/Banner";
 import ContactDetails from "@/components/contact/ContactDetails";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Community Nursing Care | Apex Aid Health Care",
+  description: "Person-centered, high-quality NDIS Services",
+};
 
 export default function CN() {
   return (

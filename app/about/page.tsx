@@ -2,7 +2,7 @@ import Banner from "@/components/common/Banner";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About | Apex Aid Services",
+  title: "About | Apex Aid Health Care",
   description: "Care that Uplifts, Support that Endures",
 };
 

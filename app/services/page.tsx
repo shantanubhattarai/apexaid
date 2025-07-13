@@ -1,5 +1,11 @@
 import FAQSection from "@/components/services/FAQSection";
 import ServiceListSection from "@/components/services/ServiceList";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Services | Apex Aid Health Care",
+  description: "Person-centered, high-quality NDIS Services",
+};
 
 const Services = () => {
   return (

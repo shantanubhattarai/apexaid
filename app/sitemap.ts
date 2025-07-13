@@ -26,7 +26,7 @@ const routes: string[] = [
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return routes.map((route) => ({
-    url: `https://apexaid.com${route}`,
+    url: `https://apexaid.com.au${route}`,
     lastModified: new Date(),
     changeFrequency: "weekly" as const,
     priority: route === "" ? 1 : 0.8,

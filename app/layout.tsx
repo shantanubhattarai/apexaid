@@ -6,10 +6,10 @@ import { PrefProvider } from "./context/PrefContext";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://apexaid.com.au"),
-  title: "Apex Aid Services",
+  title: "Apex Aid Health Care",
   description: "Care that Uplifts, Support that Endures",
   openGraph: {
-    siteName: "Apex Aid Services",
+    siteName: "Apex Aid Health Care",
     type: "website",
     locale: "en_US",
   },

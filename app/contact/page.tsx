@@ -1,7 +1,13 @@
 import Alert from "@/components/contact/Alert";
 import ContactDetails from "@/components/contact/ContactDetails";
 import ContactForm from "@/components/contact/ContactForm";
+import { Metadata } from "next";
 import { Suspense } from "react";
+
+export const metadata: Metadata = {
+  title: "Contact | Apex Aid Health Care",
+  description: "Reach out to Apex Aid Health Care anytime",
+};
 
 const Contact = () => {
   return (

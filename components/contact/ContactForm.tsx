@@ -8,7 +8,7 @@ const ContactForm = () => {
     <form
       className="flex flex-col gap-4"
       target="_blank"
-      action={"https://formsubmit.co/info@apexaid.com.au"}
+      action={"https://formsubmit.co/a1134615cf7b4294d61a8c6eaec1c6b3"}
       method="post"
       encType="multipart/form-data"
     >
