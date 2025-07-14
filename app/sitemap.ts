@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 
 const routes: string[] = [
-  "",
+  "/",
   "/about",
   "/contact",
   "/services",
