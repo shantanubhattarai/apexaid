@@ -78,7 +78,7 @@ const Header = () => {
           </Link>
           <div className="flex gap-x-4 justify-start items-center md:hidden">
             <AccessibilityWidget />
-            <button onClick={toggleNav}>
+            <button onClick={toggleNav} aria-label="Navigation Menu">
               <MenuIcon />
             </button>
           </div>
@@ -204,7 +204,7 @@ const AccessibilityWidget = () => {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger>
+      <DropdownMenuTrigger aria-label="Accessibility Menu">
         <p
           className={cn(
             "px-2 py-1 font-medium shadow-2xs hover:border-green-800 transition-all hidden md:block lg:flex lg:justify-start lg:items-center lg:gap-x-2 border rounded-sm",
